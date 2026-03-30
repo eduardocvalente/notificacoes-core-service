@@ -1,0 +1,1 @@
+# notificacoes-core-service
