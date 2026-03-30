@@ -1,0 +1,49 @@
+# Build artifacts
+bin/
+obj/
+out/
+TestResults/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+
+# .NET tools and caches
+*.rsuser
+*.cache
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+!packages/build/
+
+# Logs
+*.log
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Local environment overrides
+.env
+.env.*
+appsettings.Local.json
+appsettings.*.local.json

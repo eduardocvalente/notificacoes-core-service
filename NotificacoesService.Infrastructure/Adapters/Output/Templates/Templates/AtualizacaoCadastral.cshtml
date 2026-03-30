@@ -1,0 +1,23 @@
+@* Template: AtualizacaoCadastral
+   Modelo: AlunoAtualizadoInput
+   Renderizado por: RazorTemplateRenderer
+*@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Atualização Cadastral</title>
+</head>
+<body style="font-family: Arial, sans-serif; color: #333;">
+  <h2 style="color: #1a73e8;">Atualização Cadastral</h2>
+  <p>Olá, <strong>@Model.NomeAluno</strong>!</p>
+  <p>Seus dados cadastrais foram atualizados com sucesso.</p>
+  <p><strong>Campo atualizado:</strong> @Model.CampoAtualizado</p>
+  <p><strong>Data:</strong> @Model.DataAtualizacao.ToString("dd/MM/yyyy HH:mm")</p>
+  <p>Se você não reconhece esta alteração, entre em contato com a instituição imediatamente.</p>
+  <hr />
+  <p style="font-size: 0.85em; color: #888;">
+    Sistema Escolar — mensagem automática, não responda este e-mail.
+  </p>
+</body>
+</html>

@@ -1,0 +1,93 @@
+services:
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: notificacoes-api
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      Database__ConnectionString: "Host=postgres;Port=5432;Database=notificacoes;Username=postgres;Password=postgres"
+      Database__CommandTimeout: "30"
+      Broker__Host: rabbitmq
+      Broker__Port: "5672"
+      Broker__VirtualHost: "/"
+      Broker__Username: guest
+      Broker__Password: guest
+      Broker__Exchange: escola.events
+      Broker__MatriculaRealizadaQueue: matricula-realizada
+      Broker__NotaLancadaQueue: nota-lancada
+      Broker__AlunoAtualizadoQueue: aluno-atualizado
+      Smtp__Host: mailhog
+      Smtp__Port: "1025"
+      Smtp__Username: dev
+      Smtp__Password: dev
+      Smtp__From: dev@localhost
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - notificacoes-net
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: notificacoes-postgres
+    environment:
+      POSTGRES_DB: notificacoes
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d notificacoes"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - notificacoes-net
+    restart: unless-stopped
+
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    container_name: notificacoes-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - notificacoes-net
+    restart: unless-stopped
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: notificacoes-mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - notificacoes-net
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+  rabbitmq-data:
+
+networks:
+  notificacoes-net:
+    driver: bridge

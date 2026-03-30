@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/API/">
+    <Project Path="NotificacoesService.API/NotificacoesService.API.csproj" />
+  </Folder>
+  <Folder Name="/Application/">
+    <Project Path="NotificacoesService.Application/NotificacoesService.Application.csproj" />
+  </Folder>
+  <Folder Name="/Domain/">
+    <Project Path="NotificacoesService.Domain/NotificacoesService.Domain.csproj" />
+  </Folder>
+  <Folder Name="/Infrastructure/">
+    <Project Path="NotificacoesService.Infrastructure/NotificacoesService.Infrastructure.csproj" />
+  </Folder>
+</Solution>

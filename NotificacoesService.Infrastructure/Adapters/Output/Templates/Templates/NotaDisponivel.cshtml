@@ -1,0 +1,22 @@
+@* Template: NotaDisponivel
+   Modelo: NotaLancadaInput
+   Renderizado por: RazorTemplateRenderer
+*@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Nota Disponível</title>
+</head>
+<body style="font-family: Arial, sans-serif; color: #333;">
+  <h2 style="color: #1a73e8;">Nota Disponível</h2>
+  <p>Olá, <strong>@Model.NomeAluno</strong>!</p>
+  <p>A nota da disciplina <strong>@Model.NomeDisciplina</strong> já está disponível.</p>
+  <p><strong>Nota:</strong> @Model.Nota.ToString("F2")</p>
+  <p><strong>Data de lançamento:</strong> @Model.DataLancamento.ToString("dd/MM/yyyy")</p>
+  <hr />
+  <p style="font-size: 0.85em; color: #888;">
+    Sistema Escolar — mensagem automática, não responda este e-mail.
+  </p>
+</body>
+</html>

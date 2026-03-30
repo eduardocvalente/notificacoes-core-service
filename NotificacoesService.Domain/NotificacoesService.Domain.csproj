@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>NotificacoesService.Domain</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Exclui o subprojeto legado criado incorretamente dentro desta pasta -->
+  <ItemGroup>
+    <Compile Remove="NotificacoesService.Domain/**" />
+    <None Remove="NotificacoesService.Domain/**" />
+  </ItemGroup>
+
+</Project>

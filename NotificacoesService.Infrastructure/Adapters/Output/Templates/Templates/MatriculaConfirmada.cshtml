@@ -1,0 +1,21 @@
+@* Template: MatriculaConfirmada
+   Modelo: MatriculaRealizadaInput
+   Renderizado por: RazorTemplateRenderer
+*@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Confirmação de Matrícula</title>
+</head>
+<body style="font-family: Arial, sans-serif; color: #333;">
+  <h2 style="color: #1a73e8;">Confirmação de Matrícula</h2>
+  <p>Olá, <strong>@Model.NomeAluno</strong>!</p>
+  <p>Sua matrícula no curso <strong>@Model.NomeCurso</strong> foi confirmada com sucesso.</p>
+  <p><strong>Data da matrícula:</strong> @Model.DataMatricula.ToString("dd/MM/yyyy")</p>
+  <hr />
+  <p style="font-size: 0.85em; color: #888;">
+    Sistema Escolar — mensagem automática, não responda este e-mail.
+  </p>
+</body>
+</html>
